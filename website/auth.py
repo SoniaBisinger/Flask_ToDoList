@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 #Blueprint : a file with roots
 
@@ -8,7 +8,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login')
 def login():
     #return an HTML Page
-    return "<p>LogIn</p>"
+    return render_template("login.html", text="Welcome to my website")
 
 #logout
 
@@ -19,4 +19,4 @@ def logout():
 #signup
 @auth.route('/sign-up')
 def sign_up():
-    return "<p>Sign Up</p>"
+    return render_template("signup.html")
