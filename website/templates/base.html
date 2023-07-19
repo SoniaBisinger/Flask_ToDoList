@@ -22,10 +22,12 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-toggler="collapse"
-      data-taget="#navbar">
+      data-toggle="collapse"
+      data-target="#navbar">
+      <!-- icon for my navbar toggler button -->
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- buttons for my navigation items -->
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
           <a class="nav-item nav-link" id="login"
@@ -47,7 +49,7 @@
 
   <!-- import files js from my static folder -->
   <script type="text/javascript"
-  src="{{ url_for('static', filename = 'index.js') }}">
+    src="{{ url_for('static', filename = 'index.js') }}">
   </script>
 
 </body>
