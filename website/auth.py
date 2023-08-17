@@ -1,22 +1,35 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, flash
 
 #Blueprint : a file with roots
 
 auth = Blueprint('auth', __name__)
 
-#login
-@auth.route('/login')
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
-    #return an HTML Page
-    return render_template("login.html", text="Welcome to my website")
 
-#logout
+    return render_template("login.html", text="Welcome to my website")
 
 @auth.route('/logout')
 def logout():
     return "<p>LogOut</p>"
 
-#signup
-@auth.route('/sign-up')
+@auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    if request.method == "POST":
+        email = request.form.get("email")
+        firstName = request.form.get("firstName")
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
+
+        if len(email) < 4:
+            flash("Email must be grater than 3 characters", category = "error")
+        elif len(firstName) < 2:
+            flash("First name must be grater than 1 characters", category = "error")
+        elif password1 != password2:
+            flash("Passwords don\'t match.", category="error")
+        elif len(password1) < 7:
+            flash("Password must be at least 7 characters", category = "error")
+        else:
+            flash('Account created!', category='success')
+
     return render_template("signup.html")
